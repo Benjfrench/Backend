@@ -1,11 +1,12 @@
 const { DataTypes, Model } = require("sequelize");
 const dbConnect = require("../dbConnect");
+const Workout = require("./workout"); // Ensure Workout is imported
 
 const sequelizeInstance = dbConnect.Sequelize;
 
-class Workout extends Model {}
+class Exercise extends Model {}
 
-Workout.init(
+Exercise.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,30 +19,48 @@ Workout.init(
       allowNull: false,
       unique: true,
     },
+    workoutId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "workouts", // Make sure this matches your model name
+        key: "id",
+      },
+    },
     dateCreated: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    completionDate: {
-      type: DataTypes.DATE,
+    sets: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    squadId: {
+    reps: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    rest: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-      
+      required: true,
     },
   },
   {
     sequelize: sequelizeInstance,
-    modelName: "workouts",
+    modelName: "exercises",
     timestamps: true,
     freezeTableName: true,
   }
 );
 
-module.exports = Workout;
+// Define association
+Exercise.belongsTo(Workout, {
+  foreignKey: "workoutId",
+  as: "workout",
+});
+
+// Export Exercise model
+module.exports = Exercise;
