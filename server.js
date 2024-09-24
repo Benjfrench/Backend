@@ -20,6 +20,11 @@ app.get("/", (req, res) => {
 let playerRoutes = require("./routes/playerRoutes");
 app.use("/api/players", playerRoutes);
 
+let workoutRoutes = require("./routes/workoutRoutes");
+app.use("/api/workouts", workoutRoutes);
+
+let exerciseRoutes = require("./routes/exerciseRoutes");
+app.use("/api/exercises", exerciseRoutes);
 
 dbConnect.Sequelize.sync({ alter: true })
   .then(() => {

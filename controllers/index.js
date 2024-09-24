@@ -1,3 +1,5 @@
 module.exports = {
-    playerController: require('./playerController')
+    playerController: require('./playerController'),
+    workoutController: require('./workoutController'),
+    exerciseController: require('./exerciseController')
   }

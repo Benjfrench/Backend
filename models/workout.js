@@ -20,15 +20,15 @@ Workout.init(
     },
     dateCreated: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     completionDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     squadId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     description: {
       type: DataTypes.STRING,
