@@ -13,4 +13,8 @@ router.post("/create", (req, res) => {
   Controllers.playerController.createPlayer(req.body, res);
 });
 
+router.post("/login", (req,res)=>{
+  Controllers.playerController.loginPlayer(req.body, res);
+});
+
 module.exports = router;

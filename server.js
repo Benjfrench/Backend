@@ -5,9 +5,9 @@ require("dotenv").config();
 let dbConnect = require("./dbConnect");
 
 app.use(cors({
-  origin: 'https://localhost:5173',
-  methods: 'GET, POST',
-  credentials: true
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST','Put','DELETE'],
+  credentials: true,
 }));
 
 // parse requests of content-type - application/json

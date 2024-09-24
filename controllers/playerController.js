@@ -23,6 +23,26 @@ const createPlayer = (data, res) => {
  })
 }
 
+// Login functionality
+const loginPlayer = async (data, res) => {
+  try {
+    const { emailId, password } = data; // Extract emailId and password from data
+
+    const player = await Models.Player.findOne({ where: { emailId } });
+    
+    // Check if the player exists and password matches (consider hashing passwords)
+    if (!player || player.password !== password) {
+      return res.status(401).send({ result: 401, error: 'Invalid credentials' });
+    }
+
+    // Send a success response with player information
+    res.send({ result: 200, message: 'Login successful', player });
+  } catch (err) {
+    console.log(err);
+    res.send({ result: 500, error: err.message });
+  }
+};
+
 module.exports = {
-  getPlayers, createPlayer
+  getPlayers, createPlayer, loginPlayer
 }
