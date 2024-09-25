@@ -17,7 +17,6 @@ Exercise.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     workoutId: {
       type: DataTypes.INTEGER,
@@ -42,8 +41,8 @@ Exercise.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
+    instructions: {
+      type: DataTypes.TEXT,
       allowNull: false,
       required: true,
     },
