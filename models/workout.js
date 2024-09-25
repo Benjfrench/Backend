@@ -16,7 +16,6 @@ Workout.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     dateCreated: {
       type: DataTypes.DATE,

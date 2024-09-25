@@ -1,14 +1,35 @@
-const Workout = require('../models/workout');
+const {Workout, Exercise} = require('../models');
+
 
 // Create a new workout
 exports.createWorkout = async (req, res) => {
     try {
-        const { name, description, dateCreated = new Date(), completionDate, squadId } = req.body;
+        const { name, description, dateCreated = new Date(), completionDate, squadId, exercises } = req.body;
+        
+        // Create the workout first
         const newWorkout = await Workout.create({ name, description, dateCreated, completionDate, squadId });
+        
+        // If exercises are provided, create them associated with the workout
+        if (exercises && exercises.length > 0) {
+            const workoutId = newWorkout.id;  // Get the new workout's id
+
+            // Map through exercises array and create each exercise, linking it to the workout
+            const exercisePromises = exercises.map(exercise => {
+                return Exercise.create({
+                    ...exercise,
+                    workoutId: workoutId,  // Associate exercise with this workout
+                    dateCreated: new Date(), // You can handle default values like this
+                });
+            });
+
+            // Wait for all exercises to be created
+            await Promise.all(exercisePromises);
+        }
+
         res.status(201).json(newWorkout);
     } catch (error) {
         console.error(error); // Log the error for debugging
-        res.status(500).json({ error: 'Failed to create workout' });
+        res.status(500).json({ error: 'Failed to create workout with exercises' });
     }
 };
 
