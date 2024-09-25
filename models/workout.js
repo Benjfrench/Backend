@@ -23,7 +23,7 @@ Workout.init(
     },
     completionDate: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     squadId: {
       type: DataTypes.INTEGER,

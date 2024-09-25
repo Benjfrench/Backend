@@ -5,6 +5,7 @@ const Coach = require('./coach'); // Require the Coach model
 const Progress = require('./progress'); // Require the Progress model
 const Workout = require("./workout"); // Require the Workout model
 const Exercise = require("./exercise"); // Require the Exercise model
+const Squad = require("./squad")
 
 // Define associations
 Workout.hasMany(Exercise, {
@@ -24,6 +25,7 @@ async function init() {
    await Progress.sync(); // Sync the Progress model
    await Workout.sync(); // Sync the Workout model
    await Exercise.sync(); // Sync the Exercise model
+   await Squad.sync();
 }
 
 // Call init function to sync the models
@@ -35,5 +37,6 @@ module.exports = {
    Progress,
    Workout,
    Exercise,
+   Squad,
    // Export any other models as needed
 };
