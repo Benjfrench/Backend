@@ -40,6 +40,10 @@ Player.init(
       allowNull: false,
       required: true,
     },
+    coach: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   },
   {
     sequelize: sequelizeInstance,
