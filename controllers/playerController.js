@@ -14,14 +14,34 @@ const getPlayers = (res) => {
 }
 
 // uses JSON from request body to create new user in DB
-const createPlayer = (data, res) => {
- Models.Player.create(data).then(data => {
-     res.send({ result: 200 , data: data});
- }).catch(err => {
+const createPlayer = async (data, res) => {
+  try {
+    const { firstName, lastName, emailId, password, squadId } = data;
+
+    // Find the squad by squadCode
+    const squad = await Models.Squad.findOne({ where: { squadCode: squadId } });
+
+    // If no squad is found, return an error
+    if (!squad) {
+      return res.status(400).send({ result: 400, error: "Invalid squad code." });
+    }
+
+    // Create the player and associate with the found squad's ID
+    const newPlayer = await Models.Player.create({
+      firstName,
+      lastName,
+      emailId,
+      password,
+      squadId: squad.id, // Assign the squad's ID
+    });
+
+    // Send success response with the created player
+    res.send({ result: 200, data: newPlayer });
+  } catch (err) {
     console.log(err);
-    res.send({ result: 500, error: err.message });
- })
-}
+    res.status(500).send({ result: 500, error: err.message });
+  }
+};
 
 // Login functionality
 const loginPlayer = async (data, res) => {
