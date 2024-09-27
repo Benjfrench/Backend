@@ -33,7 +33,7 @@ Player.init(
       type: DataTypes.STRING,
       allowNull: false,
       required: true,
-      unique: true,
+      unique: 'emailId',
     },
     password: {
       type: DataTypes.STRING,

@@ -18,7 +18,7 @@ const { DataTypes, Model } = require("sequelize");
       },
    completed: {
    type: DataTypes.BOOLEAN, allowNull: false, required: true, 
-  unique: true
+  unique: "completed"
       },
    completedDate: {
    type: DataTypes.DATE, allowNull: false, required: true

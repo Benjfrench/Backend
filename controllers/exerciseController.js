@@ -20,6 +20,19 @@ exports.getAllExercises = async (req, res) => {
   }
 };
 
+// Get exercises by workout ID
+exports.getExercisesByWorkoutId = async (req, res) => {
+  try {
+    const exercises = await Exercise.findAll({ where: { workoutId: req.params.workoutId } });
+    if (exercises.length === 0) {
+      return res.status(404).json({ message: "No exercises found for this workout" });
+    }
+    res.status(200).json(exercises);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching exercises by workout ID", error });
+  }
+};
+
 // Get a specific exercise by ID
 exports.getExerciseById = async (req, res) => {
   try {

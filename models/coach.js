@@ -18,7 +18,7 @@ const { DataTypes, Model } = require("sequelize");
       },
    emailId: {
    type: DataTypes.STRING, allowNull: false, required: true, 
-  unique: true
+  unique: "emailId"
       },
    password: {
    type: DataTypes.STRING, allowNull: false, required: true
