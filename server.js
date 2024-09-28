@@ -6,7 +6,7 @@ let dbConnect = require("./dbConnect");
 
 app.use(cors({
   origin: 'http://localhost:5173',
-  methods: ['GET', 'POST','Put','DELETE'],
+  methods: ['GET', 'POST','PUT','DELETE'],
   credentials: true,
 }));
 
@@ -25,6 +25,9 @@ app.use("/api/workouts", workoutRoutes);
 
 let exerciseRoutes = require("./routes/exerciseRoutes");
 app.use("/api/exercises", exerciseRoutes);
+
+let progressRoutes = require("./routes/progressRoutes"); 
+app.use("/api/progress", progressRoutes);
 
 dbConnect.Sequelize.sync({ alter: true })
   .then(() => {

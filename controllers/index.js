@@ -1,5 +1,6 @@
 module.exports = {
     playerController: require('./playerController'),
     workoutController: require('./workoutController'),
-    exerciseController: require('./exerciseController')
+    exerciseController: require('./exerciseController'),
+    progressController: require('./progressController'),
   }

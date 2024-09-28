@@ -1,10 +1,10 @@
 # Backend API for Sports Team Management
 
-This repository contains the backend API for a sports team management application, allowing coaches and athletes to manage workouts and exercises. The API is built using Express.js and Sequelize, connected to a MySQL database.
+This repository contains the backend API for a sports team management application called TeamTrainer, allowing coaches and athletes to manage workouts and exercises. Coaches can create workouts using a range of exercises drawn from a third party API found at https://api.api-ninjas.com/v1/exercises. The API is built using Express.js and Sequelize, connected to a MySQL database. The associated front end application can be found and accessed at the following public git repo: https://github.com/Benjfrench/capstoneApp.git. 
 
 ## Table of Contents
-
-- [Technologies](#technologies)
+ 
+-[Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
@@ -22,19 +22,31 @@ This repository contains the backend API for a sports team management applicatio
 - dotenv (for environment variables)
 
 ## Installation
+To get started, clone the repository and install all relevant packages. 
+1. git clone https://github.com/Benjfrench/Backend.git
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Benjfrench/Backend.git
-2. Install dependencies:
-    npm install
-3. Configure .env
-    Configure the env file for your local environment
-4. Start the server
+2. Install dependencies using the following terminal commands:
+    npm install express
+    npm install sequelize
+    npm install cors
+    npm install dotenv
+    npm install mysql12
+
+3. Make sure mysql workbench is downloaded: https://dev.mysql.com/downloads/workbench/. Create a database using mysql and connect to the backend project using .env file.
+
+4. Configure your .env file by making sure all fields match the fields you are using on mysql. This includes DB_NAME, DB_USER (should default to root), DB_PASSWORD, DB_HOST, DB_PORT and PORT. Current .env file contains placeholder password. Make sure to create a .gitignore file and include the .env file if pushing to a public repo, to protect the security of the password.
+
+
+5. Make sure cors is configured correctly when setting up with front end, to ensure communication between both servers. 
+
+6. Start the server
     npm run start
 
+7. Once server is started, double check which port the server is running on. This should match your PORT on your .env file. 
+
+
 ## Usage
-The API is accessible at http://localhost:8081/api. It is hosted locally and designed to support a website called TeamTrainer.
+For front end functionality, clone the following github repo found here: https://github.com/Benjfrench/capstoneApp.git and follow the instructions in the attached readme file.
 
 ## API Endpoints
 
