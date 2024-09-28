@@ -37,7 +37,7 @@ To get started, clone the repository and install all relevant packages.
 4. Configure your .env file by making sure all fields match the fields you are using on mysql. This includes DB_NAME, DB_USER (should default to root), DB_PASSWORD, DB_HOST, DB_PORT and PORT. Current .env file contains placeholder password. Make sure to create a .gitignore file and include the .env file if pushing to a public repo, to protect the security of the password.
 
 
-5. Make sure cors is configured correctly when setting up with front end, to ensure communication between both servers. 
+5. Make sure cors is configured correctly when setting up with front end, to ensure communication between both services. 
 
 6. Start the server
     npm run start
